@@ -5,6 +5,7 @@ EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 from flask import flash
 
 class User:
+   db = 'recipes'
    def __init__(self, data):
       self.id = data['id']
       self.email = data['email']
@@ -17,18 +18,18 @@ class User:
    @classmethod
    def create_user(cls,data):
       query = "INSERT into users (email, first_name, last_name, password) VALUES (%(email)s,%(first_name)s,%(last_name)s,%(password)s);"
-      return connectToMySQL('recipes').query_db(query,data)
+      return connectToMySQL(cls.db).query_db(query,data)
    
    @classmethod
    def get_user_by_id(cls, data):
       query = "SELECT * FROM users WHERE id = %(id)s;"
-      results = connectToMySQL('recipes').query_db(query,data)
+      results = connectToMySQL(cls.db).query_db(query,data)
       return cls(results[0])
    
    @classmethod
    def get_user_by_email(cls, data):
       query = "SELECT * FROM users WHERE email = %(email)s"
-      results = connectToMySQL('recipes').query_db(query, data)
+      results = connectToMySQL(cls.db).query_db(query, data)
       if len(results) <1:
          return False
       return cls(results[0])

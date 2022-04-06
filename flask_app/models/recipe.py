@@ -11,14 +11,28 @@ class Recipe:
       self.date_made = data['date_made']
       self.created_at = data['created_at']
       self.updated_at = data['updated_at']
+      self.user_id = data['user_id']
 
    @classmethod
    def create_recipe(cls, data):
       query = """
-      INSERT INTO recipes (name, description, instruction, under_30, date_made)
-      VALUES (%(name)s, %(description)s, %(instruction)s, %(under_30)s, %(date_made)s)
+      INSERT INTO recipes (name, description, instruction, under_30, date_made, user_id)
+      VALUES (%(name)s, %(description)s, %(instruction)s, %(under_30)s, %(date_made)s, %(user_id)s)
       ;"""
       return connectToMySQL(cls.db).query_db(query, data)
+   
+   @classmethod
+   def get_all_recipes(cls, data):
+      query = '''
+      SELECT * 
+      FROM recipes
+      ;'''
+      results = connectToMySQL(cls.db).query_db(query, data)
+      recipes = []
+      for row in results:
+         recipes.append(cls(row))
+      print(recipes)
+      return recipes
 
    @classmethod
    def update_recipe(cls,data):
