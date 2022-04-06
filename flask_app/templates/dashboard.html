@@ -51,10 +51,10 @@
                   <div class="card-body">
                      <div class="card-subtitle mb-3 text-muted">Under 30 Minutes: </div>
                      <div class="card-subtitle mb-3 text-muted">
-                        {%  if recipe.under30 == 1 %}
-                           Yes
+                        {%  if recipe.under_30 == 1 %}
+                              Yes
                            {% else %}
-                           No
+                              No
                         {% endif %}
                      </div>
                      <div class="card-text">{{recipe.description}}</div>
@@ -62,32 +62,14 @@
                   <div class="card-footer text-center">
                      <a href="#" class="card-link text-info">View Instructions</a>
                      <a href="#" class="card-link text-info">Edit</a>
-                     <a href="#" class="card-link text-info">Delete</a>
+                     <a href="/recipes/delete/{{recipe.id}}" class="card-link text-info">Delete</a>
                   </div>
                </div>
             </div>
             {% endfor %}
          </div>
       </div>
-         <!-- <table class="table table-striped table-hover mx-auto shadow p-3 mb-5 bg-body rounded">
-            <thead>
-               <tr class="text-center fs-5">
-                  <th scope="col">Recipe</th>
-                  <th scope="col">Under 30 minutes</th> 
-                  <th scope="col">Actions</th>
-               </tr>
-            </thead>
-            <tbody>
-               <tr class="text-center">
-                  <th class="fw-light">Thai Salmon Cakes</th>
-                  <th class="fw-light">No</th>
-                  <th><a href="" class="btn btn-outline-info btn-sm">View Intructions</a> <a href="" class="btn btn-outline-info btn-sm">Edit</a> <a href="" class="btn btn-outline-info btn-sm">Delete</a></th>
-               </tr>
-            </tbody>
-         </table> -->
       
-
-   
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

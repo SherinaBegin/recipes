@@ -20,3 +20,11 @@ def create_recipe():
       return redirect('/logout')
    recipe.Recipe.create_recipe(request.form)
    return redirect('/dashboard')
+
+@app.route('/recipes/delete/<int:id>')
+def delete_recipe(id):
+   data = {
+      'id':id
+   }
+   recipe.Recipe.destroy_recipe(data)
+   return redirect('/dashboard')
