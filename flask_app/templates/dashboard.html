@@ -44,7 +44,7 @@
          <div class="row">
             {% for recipe in recipes %}
             <div class="col">
-               <div class="card">
+               <div class="card h-100">
                   <div class="card-header text-center">
                      {{recipe.name}}
                   </div>
@@ -60,9 +60,12 @@
                      <div class="card-text">{{recipe.description}}</div>
                   </div>
                   <div class="card-footer text-center">
-                     <a href="#" class="card-link text-info">View Instructions</a>
+                     <a href="/recipes/instructions/{{recipe.id}}" class="card-link text-info">View Instructions</a>
+                     {% if recipe.user_id == session.user_id %}
+                     <!-- if the user is logged in they can view edit and delete buttons for the recipes that they have created. -->
                      <a href="/recipes/edit/{{recipe.id}}" class="card-link text-info">Edit</a>
                      <a href="/recipes/delete/{{recipe.id}}" class="card-link text-info">Delete</a>
+                     {% endif %}
                   </div>
                </div>
             </div>

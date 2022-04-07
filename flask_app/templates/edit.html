@@ -30,13 +30,13 @@
          </div>
          <div class="card mt-5 shadow p-3 mb-5 bg-body rounded">
             <div class="card-body pt-5 pb-5">
-               <!-- {% with messages = get_flashed_messages() %}
+               {% with messages = get_flashed_messages() %}
                   {% if messages %}
                      {% for message in messages %}
                         <p>{{message}}</p>
                      {% endfor %}
                   {% endif %}
-               {% endwith %} -->
+               {% endwith %}
                <form action="/recipes/update" method="post">
                   <div class="row justify-content-center">
                      <div class="col-6">

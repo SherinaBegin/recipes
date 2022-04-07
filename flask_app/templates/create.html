@@ -43,11 +43,11 @@
          <div class="card mt-5 shadow p-3 mb-5 bg-body rounded">
             <div class="card-body pt-5 pb-5">
                {% with messages = get_flashed_messages() %}
-                  {% if messages %}
-                     {% for message in messages %}
-                        <p>{{message}}</p>
-                     {% endfor %}
-                  {% endif %}
+               {% if messages %}
+                  {% for message in messages %}
+                     <p>{{message}}</p>
+                  {% endfor %}
+               {% endif %}
                {% endwith %}
                <form action="/recipes/create" method="post">
                   <div class="row justify-content-center">
@@ -62,7 +62,7 @@
                            <textarea type="text" class="form-control" id="description" name="description"></textarea>
                         </div>
                         <div class="mb-3">
-                           <label for="intruction" class="form-label">Instruction:</label>
+                           <label for="instruction" class="form-label">Instruction:</label>
                            <textarea type="text" class="form-control" id="instruction" name="instruction"></textarea>
                         </div>
                         <div class="mb-3">

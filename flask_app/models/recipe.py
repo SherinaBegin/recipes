@@ -67,19 +67,19 @@ class Recipe:
       ;'''
       return connectToMySQL(cls.db).query_db(query, data)
 
-   # @staticmethod
-   # def validate_recipe(recipe):
-   #    is_valid = True
-   #    if len(recipe['name']) < 3:
-   #       is_valid = False
-   #       flash("Name must be at least 3 characters")
-   #    if len(recipe['instructions']) < 3:
-   #       is_valid = False
-   #       flash("Instructions must be at least 3 characters")
-   #    if len(recipe['description']) < 3:
-   #       is_valid = False
-   #       flash("Description must be at least 3 characters")
-   #    if recipe['date_made'] == "":
-   #       is_valid = False
-   #       flash("Please enter a date")
-   #    return is_valid
+   @staticmethod
+   def validate_recipe(recipe):
+      is_valid = True
+      if len(recipe['name']) < 3:
+         is_valid = False
+         flash("Name must be at least 3 characters")
+      if len(recipe['instruction']) < 3:
+         is_valid = False
+         flash("Instructions must be at least 3 characters")
+      if len(recipe['description']) < 3:
+         is_valid = False
+         flash("Description must be at least 3 characters")
+      if recipe['date_made'] == "":
+         is_valid = False
+         flash("Please enter a date")
+      return is_valid

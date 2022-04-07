@@ -13,40 +13,42 @@
             <a class="navbar-brand fs-3" href="#">Recipes</a>
             <ul class="navbar-nav me-auto mt-2 mb-2 mb-lg-0">
                <li class="nav-item">
-                  <a class="nav-link active" href="/recipes">Home</a>
+                  <a class="nav-link active" href="/dashboard">Home</a>
                </li>
             </ul>
-            <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                  aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                  </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                     </li>
-                  <form class="d-flex">
-                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                     <button class="btn btn-outline-info" type="submit">Search</button>
-                  </form>
-            </div> -->
             <a href="/logout" class="btn btn-info btn-sm">logout</a>
          </div>
       </nav>
       <div class="container">   
-         <div class="card mt-5">
+         <div class="card mt-5 mx-auto w-50 shadow p-3 mb-5 bg-body rounded">
             <div class="card-body">
-               <h5 class="card-title">Description:</h5>
-               <p class="card-text">Extremely Delicious!</p>
-               <h6 class="card-subtitle mb-2 text-muted">Under 30 minutes:</h6>
-               <p class="card-text">No</p>
-               <h6 class="card-subtitle mb-2 text-muted">Instructions:</h6>
-               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-               <h6 class="card-subtitle mb-2 text-muted">Date Made:</h6>
-               <p class="card-text">April 4, 2022</p>
-               <a href="#" class="card-link">Edit</a>
-               <a href="#" class="card-link">Delete</a>
+               <h2 class="text-center">{{recipe.name}}</h2>
+               <div class="mb-3">
+                  <h5 class="card-title">Description:</h5>
+                  <p class="card-text ms-3">{{recipe.description}}</p>
+               </div>
+               <div class="mb-3 d-flex">
+               <h6 class="card-text mt-1 text-muted">Under 30 minutes:</h6>
+                  <p class="card-text ms-3">
+                     {%  if recipe.under_30 == 1 %}
+                        Yes
+                        {% else %}
+                        No
+                     {% endif %}
+                  </p>
+               </div>
+               <div class="mb-3">
+                  <h6 class="card-subtitle mb-2 text-muted">Instructions:</h6>
+                  <p class="card-text text-wrap">{{recipe.instruction}}</p>
+               </div>
+               <div class="mb-3">
+                  <h6 class="card-subtitle mb-2 text-muted">Date Made:</h6>
+                  <p class="card-text">{{recipe.date_made.strftime('%m-%d-%Y')}}</p>
+               </div>
+               {% if recipe.user_id == session.user_id%}
+               <a href="/recipes/edit/{{recipe.id}}" class="card-link">Edit</a>
+               <a href="/recipes/delete/{{recipe.id}}" class="card-link">Delete</a>
+               {% endif %}
             </div>
          </div>
       </div>
